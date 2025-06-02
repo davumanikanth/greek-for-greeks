@@ -1,14 +1,25 @@
 class Solution {
     int lowerBound(int[] nums, int target) {
         // code here
-       int n=nums.length;
-       for(int i=0;i<n;i++)
-       {
-           if(nums[i]>= target)
+        int n=nums.length;
+        int low=0;
+        int high=n-1;
+        int ans=n;
+        while(low<=high)
+        {
+           int mid=low+(high-low)/2;
+           if(nums[mid]>=target)
            {
-               return i;
+               ans=mid;
+               high=mid-1;
+               
            }
-       }
-       return n;
+           else
+           {
+               low=mid+1;
+           }
+        }
+        return ans;
+        
     }
 }
